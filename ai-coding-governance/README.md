@@ -2,7 +2,21 @@
 
 AI によるコーディングで起きがちな「過剰設計」「普通の実装からの逸脱」「レビュー対象ではないはずの定型実装まで毎回レビューしないといけない問題」を抑えるためのスキルです。
 
-このスキルの目的は、AI に自由に設計させることではなく、プロジェクト内で許可された設計空間の中で、最小の差分を高速に実装させることです。
+このスキルの目的は、AI に自由に設計させることではなく、プロジェクト内で許可された設計空間の中で、最小の差分を高速に実装させることです。つまり、このスキルは「普通」を定義し、AI がその外に出るときはユーザーの明示的な指示、または承認済みの decision diff を必要とするためのものです。
+
+## 普通の書き方リファレンス
+
+このスキルでは、言語・フレームワークごとの「普通」を次の Markdown に分けています。対象領域の実装やレビューを行う前に、該当ファイルを読んでください。
+
+- Rails: [`references/rails.md`](references/rails.md)
+- React: [`references/react.md`](references/react.md)
+- TypeScript: [`references/typescript.md`](references/typescript.md)
+- Terraform 共通: [`references/terraform.md`](references/terraform.md)
+- Terraform AWS: [`references/terraform.md`](references/terraform.md) と [`references/terraform-aws.md`](references/terraform-aws.md)
+- Terraform GCP: [`references/terraform.md`](references/terraform.md) と [`references/terraform-gcp.md`](references/terraform-gcp.md)
+- Go: [`references/golang.md`](references/golang.md)
+
+これらは絶対的な教条ではなく、AI がデフォルトで従うべき通常運転の範囲です。リポジトリ固有の近傍パターンと衝突する場合は、まずリポジトリ側の普通を優先します。ユーザーが明示的に逸脱を指示した場合は、その指示に従い、decision diff に「どこを、なぜ普通から外すのか」を記録します。
 
 ## 何を解決するか
 

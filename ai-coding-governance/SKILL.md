@@ -1,15 +1,31 @@
 ---
 name: ai-coding-governance
-description: Governance workflow for AI-assisted coding that separates design decisions from routine implementation. Use when planning, implementing, or reviewing AI-generated code; when the user complains about overengineering, non-idiomatic Rails/TypeScript/JavaScript choices, excessive abstractions, broad PRs, repeated review cost, schema/status-column/STI concerns, or wants a minimal, conventional, decision-diff-first coding process.
+description: Governance workflow for AI-assisted coding that defines the ordinary way to write Rails, React, TypeScript, Terraform, Terraform AWS/GCP, and Go code, and separates design decisions from routine implementation. Use when planning, implementing, or reviewing AI-generated code; when the user complains about overengineering, non-idiomatic choices, excessive abstractions, broad PRs, repeated review cost, schema/status-column/STI concerns, or wants a minimal, conventional, decision-diff-first coding process with explicit approval for deviations.
 ---
 
 # AI Coding Governance
 
-Use this skill to keep AI coding inside the project's allowed design space. Treat AI as a fast implementer under strong constraints, not as an unconstrained architect.
+Use this skill to define and enforce the project's **ordinary way** of building software. Keep AI coding inside the project's allowed design space. Treat AI as a fast implementer under strong constraints, not as an unconstrained architect.
+
+The default behavior is to follow the ordinary patterns defined here and in the relevant reference files. Deviate only when the user explicitly instructs it or when a decision diff explains the necessity and receives approval.
+
+## Ordinary references
+
+Load the relevant reference before planning or editing in these domains:
+
+- Rails: `references/rails.md`
+- React: `references/react.md`
+- TypeScript: `references/typescript.md`
+- Terraform general: `references/terraform.md`
+- Terraform AWS: load both `references/terraform.md` and `references/terraform-aws.md`
+- Terraform GCP: load both `references/terraform.md` and `references/terraform-gcp.md`
+- Go: `references/golang.md`
+
+These references define the default ordinary choices. If the repository's local patterns conflict with a reference, follow the repository unless the user explicitly asks to change the convention. If the user explicitly requests an approach that deviates from ordinary practice, follow the user's instruction and record the deviation in the decision diff.
 
 ## Core rule
 
-Separate **decision diff** from **routine implementation** before editing code.
+Separate **decision diff** from **routine implementation** before editing code. The decision diff must call out any deviation from ordinary practice or from the relevant reference file.
 
 - Decision diff: choices humans must approve because they affect concepts, data models, invariants, failure behavior, or reversibility.
 - Routine implementation: mechanical code that follows approved decisions and existing local patterns.
