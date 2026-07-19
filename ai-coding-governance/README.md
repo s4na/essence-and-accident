@@ -37,23 +37,15 @@ Decision diff とは、コード差分そのものではなく、今回新しく
 
 人間はまずここだけを確認します。承認後、AI はその決定から逸脱せずに実装します。
 
-## デフォルトの制約
+## 資料の役割
 
-このスキルでは、次のような変更は原則として禁止されます。
+このスキルの資料は、AI が実行時に読むものと、人間が理解・レビューするためのものを分けています。
 
-- 新規テーブル
-- 新規カラム、特に nullable なカラム
-- `status` / state カラムや enum
-- STI
-- generic な基底クラスや interface
-- service object / concern / callback / background job / feature flag
-- 新しい依存関係
-- 未要求の将来要件への対応
-- 美的理由だけの周辺リファクタリング
+- `SKILL.md`: 作業の開始条件、decision diff、実装、停止、レビューの手順
+- `references/`: AI が作業前に読む正規の運用ルール。短い箇条書きで、Rails などの通常の実装方針を記載
+- `example/`: `references/` のルールを具体的な要件とコードで理解するための、人間向けの解説
 
-これらは絶対に悪いものではありません。ただし、AI がデフォルトで選んでよいものではありません。
-
-導入する場合は、「既存構造ではなぜ無理なのか」「現在の要件に本当に必要なのか」「どんな不正状態や保守コストを増やすのか」を説明し、承認を得る必要があります。
+AI に実装を依頼するときは `SKILL.md` と該当する `references/` を使い、`example/` はルールの正本として扱いません。
 
 ## 使い方
 
@@ -76,7 +68,7 @@ Include:
 
 Constraints:
 - Minimize new concepts, not just lines.
-- Do not add tables, columns, statuses, enums, STI, generic base classes, service objects, concerns, callbacks, jobs, flags, or dependencies unless you prove they are necessary.
+- Read and apply the relevant `references/` before making design choices.
 - Implement only current requirements.
 - Follow local repository patterns over generic best practices.
 - If a new design decision appears during implementation, stop.
@@ -109,3 +101,11 @@ AI の変更は、ファイル単位ではなく意味単位で分けるのが�
 5. テスト
 
 同じコードを複数コミットで何度も書き換えると、レビュー側は同じ意味を何度も追うことになります。可能な限り、既存行を一度だけ変更する計画にします。
+
+## メンテナンス
+
+- AI の判断基準を追加・変更するときは、まず該当する `references/` の箇条書きを更新する。
+- Rails、frontend、infrastructure などの通常の実装方針は、該当する reference に短く書く。`SKILL.md` に同じルールを重複して書かない。
+- 人間が具体的なケースを理解できるようにする必要がある場合だけ、対応する `example/` を追加・更新する。
+- `example/` は reference の文章を箇条書きで再掲する場所ではなく、要件、やらないこと、decision diff、実装例、レビュー観点を説明する場所とする。
+- reference の追加・変更・削除時は、`example/README.md` と該当カテゴリの README、影響を受ける個別 example の対応表と内容を確認する。

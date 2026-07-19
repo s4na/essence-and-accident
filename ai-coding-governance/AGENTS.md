@@ -2,19 +2,24 @@
 
 このディレクトリ配下の `ai-coding-governance` スキルを変更するときは、次のルールに従うこと。
 
-## Examples の網羅ルール
+## Reference の正本ルール
 
-`example/` は、単なるサンプル集ではなく、`SKILL.md` に書かれた制約・原則・運用プロトコルを項目ごとに網羅するためのディレクトリとして扱う。
+`references/` は、AI が作業時に参照する正規の運用ルールとして扱う。`SKILL.md` は実行手順、`references/` は通常の実装方針と制約を担当する。
 
-`SKILL.md` で次のいずれかを追加・削除・変更した場合は、必ず `example/` も同時に更新すること。
+- 新しい判断基準や通常の実装方針は、最初に該当する `references/*.md` に追加すること
+- reference の本文は、AI が判断に使える短い箇条書きを基本とすること
+- 同じルールを `SKILL.md` に重複して書かず、必要なら reference へのリンクだけを追加すること
+- Rails、frontend、infrastructure のいずれにも属さない作業は `references/core.md` に置くこと
+- reference 間で矛盾するルールを作らず、例外が必要なら decision diff で承認を求めること
 
-- hard default constraints
-- design principles
-- pre-implementation protocol
-- implementation protocol after approval
-- review protocol
-- commit guidance
-- prompt template
+## Examples の役割
+
+`example/` は、reference の箇条書きを人間が具体的なケースとして理解・レビューするための解説資料として扱う。スキル実行時の正本や、ルールの網羅リストにはしないこと。
+
+- reference の変更時は、影響を受ける example があるかを確認すること
+- example を追加・更新する場合は、対応する reference の項目を `example/README.md` の対応表に反映すること
+- example は reference の文章を再掲するだけにせず、要件、やらないこと、decision diff、普通の実装、レビュー観点を説明すること
+- 具体例が不要な抽象的な手順変更では、example を無理に追加しないこと
 
 ## Examples の配置ルール
 
@@ -43,12 +48,12 @@
 
 ## Coverage table の更新
 
-`example/README.md` は、スキル上の項目と example ドキュメントの対応表として機能する。
+`example/README.md` は、reference の項目と人間向け example ドキュメントの対応表として機能する。
 
-項目を追加・移動・削除した場合は、リンク切れや未対応項目が残らないように `example/README.md` と各カテゴリの `README.md` を更新すること。
+項目を追加・移動・削除した場合は、リンク切れや対応漏れが残らないように `example/README.md` と各カテゴリの `README.md` を更新すること。
 
 ## スキル本文との整合性
 
-`README.md`、`SKILL.md`、`example/`、`agents/openai.yaml` の説明が矛盾しないようにすること。
+`README.md`、`SKILL.md`、`references/`、`example/`、`agents/openai.yaml` の説明が矛盾しないようにすること。
 
 特に、スキル本文で「禁止」「要承認」「停止」としている項目について、example 側でそれを通常実装として許可するような書き方をしないこと。

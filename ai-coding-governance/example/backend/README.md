@@ -2,6 +2,8 @@
 
 DB、モデル、controller、API、worker、server-side domain logic 周辺の例をまとめています。
 
+対応する正規ルールは [`../../references/rails.md`](../../references/rails.md) です。
+
 ここでは「バックエンドなら普通こう置く」「この程度なら永続化・状態・非同期・層を増やさない」という判断を、すべて Markdown 内のインラインコードで示します。サンプルコードは Rails が中心ですが、意図は Rails 固有ではなくバックエンド一般の制約です。
 
 ## 一覧

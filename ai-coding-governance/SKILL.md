@@ -7,6 +7,17 @@ description: Governance workflow for AI-assisted coding that separates design de
 
 Use this skill to keep AI coding inside the project's allowed design space. Treat AI as a fast implementer under strong constraints, not as an unconstrained architect.
 
+## Reference lookup
+
+Before producing a decision diff, read the reference that matches the change:
+
+- Always read [`references/core.md`](./references/core.md).
+- For Rails, backend, model, controller, API, or server-side changes, read [`references/rails.md`](./references/rails.md).
+- For UI, component, client-side state, type, or frontend dependency changes, read [`references/frontend.md`](./references/frontend.md).
+- For Terraform, Kubernetes, CI/CD, environment, or cloud resource changes, read [`references/infrastructure.md`](./references/infrastructure.md).
+
+Use the references as concise operational rules. If a repository's established pattern conflicts with a reference, surface that conflict in the decision diff instead of silently choosing a new convention.
+
 ## Core rule
 
 Separate **decision diff** from **routine implementation** before editing code.
@@ -39,59 +50,7 @@ Before changing code, produce this plan and wait for approval unless the user ex
 
 Keep the plan concrete and short. The plan must show why the change is local and conventional for this repository.
 
-## Hard default constraints
-
-Assume these are forbidden unless explicitly justified and approved:
-
-- New tables
-- New columns, especially nullable columns
-- Persisted `status`/state columns or enums
-- STI or inheritance hierarchies for domain modeling
-- Generic base classes or interfaces
-- Service objects, concerns, callbacks, background jobs, feature flags, or state machines not already idiomatic in the local code
-- New dependencies
-- New framework/layer conventions
-- Future-proofing for unrequested requirements
-- Rewriting nearby code for aesthetic consistency
-
-These tools are not absolutely banned. They require proof that existing structures cannot satisfy the current requirement with a smaller, reversible change.
-
-## Design principles
-
-### 1. Minimum conceptual diff
-
-Implement the current requirement with the fewest new concepts, files, states, and persistence changes. Avoid “general and extensible” designs unless the generality is already required now.
-
-### 2. Burden of proof for new concepts
-
-For every new concept, answer:
-
-- What current requirement makes it necessary?
-- Why cannot an existing concept hold this responsibility?
-- What invalid states or review burden does it add?
-- How hard is it to reverse later?
-
-If the answer is weak, do not introduce it.
-
-### 3. Current requirements only
-
-Do not implement predicted future variants. Prefer a reversible, boring implementation now and refactor when real requirements arrive.
-
-### 4. Local consistency beats generic best practice
-
-Follow this repository's nearby patterns over abstract best practices. Inspect adjacent code first. If the local code avoids a pattern, avoid it too unless asked otherwise.
-
-### 5. Do not make invalid states representable
-
-Persist facts, not derived status, when possible. Derive state from existing facts such as timestamps, associations, or records. Avoid duplicated truth such as `status = active` plus `activated_at` unless there is a clear invariant and enforcement plan.
-
-### 6. Security and correctness are non-negotiable
-
-Never accept injection-prone code, unsafe input handling, type widening that hides invalid data, or broad exception swallowing as a “minimal” shortcut.
-
-### 7. Preserve review signal
-
-Make it obvious which lines encode decisions. Keep mechanical changes boring, localized, and aligned with existing names and helpers.
+The detailed default constraints and conventions are maintained in the references above. Apply them unless the user explicitly approves a justified exception.
 
 ## Implementation protocol after approval
 
@@ -150,7 +109,7 @@ Include:
 
 Constraints:
 - Minimize new concepts, not just lines.
-- Do not add tables, columns, statuses, enums, STI, generic base classes, service objects, concerns, callbacks, jobs, flags, or dependencies unless you prove they are necessary.
+- Read and apply the relevant `references/` before making design choices.
 - Implement only current requirements.
 - Follow local repository patterns over generic best practices.
 - If a new design decision appears during implementation, stop.

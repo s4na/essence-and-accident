@@ -2,6 +2,8 @@
 
 UI、component、client-side state、型、依存、画面差分に関する例をまとめています。
 
+対応する正規ルールは [`../../references/frontend.md`](../../references/frontend.md) です。
+
 ここでは「フロントエンドなら普通こう閉じる」「UI の一時状態や表示都合を過剰に抽象化・永続化しない」という判断を示します。サンプルコードは TypeScript / React が中心ですが、意図はフロントエンド一般の制約です。
 
 ## 一覧

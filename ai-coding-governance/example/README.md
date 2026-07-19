@@ -1,8 +1,8 @@
 # Examples
 
-このディレクトリは、`ai-coding-governance` の「普通のルールに従うとどういう全体像になるか」を、言語やフレームワーク名ではなく、コードの責務領域ごとにまとめて示す例です。
+このディレクトリは、`references/` にある箇条書きのルールを、人間が具体的な要件・コード・レビューの流れとして理解するための例です。言語やフレームワーク名ではなく、コードの責務領域ごとにまとめています。
 
-目的は、正解の設計パターン集ではありません。AI が過剰に自由な設計空間へ出ないように、各種変更を **最小概念差分**・**既存パターン優先**・**decision diff 先行**で扱うとどう見えるかを示します。
+目的は、正解の設計パターン集でも、AI が実行時に読むルール一覧でもありません。各種変更を **最小概念差分**・**既存パターン優先**・**decision diff 先行**で扱うと、人間向けにはどう見えるかを示します。
 
 ## 読み方
 
@@ -13,7 +13,7 @@
 - Terraform、Kubernetes、CI/CD、環境変数、クラウドリソースなどインフラのコードなら [`infrastructure/`](./infrastructure/)
 - decision diff、境界設計、承認後停止、review、commit などメタなアーキテクチャ判断なら [`architecture/`](./architecture/)
 
-各ドキュメントは、次の順番で読みます。
+各ドキュメントは、対応する reference の箇条書きを前提に、次の順番で読みます。
 
 1. 要件
 2. やらないこと
@@ -23,15 +23,22 @@
 
 コード例はすべて Markdown 内にインラインで置いています。実際のアプリにそのままコピーするためではなく、AI に期待する変更の粒度・責務境界・禁止したい過剰設計を共有するためのものです。
 
-## 網羅性のルール
+## メンテナンス上の位置づけ
 
-この `example/` は、代表例を何個か置く場所ではなく、`SKILL.md` にある制約・原則・運用プロトコルを項目ごとに対応づける場所です。
+`references/` がルールの正本で、`example/` はその理解を助ける具体例です。reference のすべての箇条書きに一対一の example が必要なわけではありません。人間が判断の違いを理解するのに有効なケースだけを example として置きます。
 
-`SKILL.md` の hard default constraints、design principles、pre-implementation protocol、implementation protocol after approval、review protocol、commit guidance、prompt template を変更した場合は、対応する example も追加・移動・更新します。
+reference を変更したときは、対応する example の説明、コード、レビュー観点が古くなっていないか確認します。example だけを変更して新しいルールを追加することはしません。
 
 ## ディレクトリ別一覧
 
-### Backend
+対応する reference は次のとおりです。
+
+- Backend / Rails: [`../references/rails.md`](../references/rails.md)
+- Frontend: [`../references/frontend.md`](../references/frontend.md)
+- Infrastructure: [`../references/infrastructure.md`](../references/infrastructure.md)
+- Core / Architecture: [`../references/core.md`](../references/core.md)
+
+### Backend / Rails
 
 - [既存モデルに小さな振る舞いを追加する](./backend/small-behavior.md)
 - [status カラムを増やさず事実から状態を導出する](./backend/derived-state.md)
@@ -66,7 +73,7 @@
 - [環境変数・設定追加の立証責任](./infrastructure/no-unapproved-config.md)
 - [CI/CD 変更の最小差分](./infrastructure/minimal-ci-change.md)
 
-### Architecture
+### Core / Architecture
 
 - [decision diff と実装の分離](./architecture/decision-diff-full-flow.md)
 - [local consistency 優先](./architecture/local-consistency.md)

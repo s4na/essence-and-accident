@@ -2,6 +2,8 @@
 
 Terraform、Kubernetes、CI/CD、環境変数、クラウドリソースなど、インフラのコードに関する例をまとめています。
 
+対応する正規ルールは [`../../references/infrastructure.md`](../../references/infrastructure.md) です。
+
 ここでは「便利そうだからリソースを増やす」「設定で逃がす」「CI を大きく作り替える」を避け、現在要件に必要な最小差分だけを扱います。
 
 ## 一覧
