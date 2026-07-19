@@ -42,7 +42,10 @@ Decision diff とは、コード差分そのものではなく、今回新しく
 このスキルの資料は、AI が実行時に読むものと、人間が理解・レビューするためのものを分けています。
 
 - `SKILL.md`: 作業の開始条件、decision diff、実装、停止、レビューの手順
-- `references/`: AI が作業前に読む正規の運用ルール。短い箇条書きで、Rails などの通常の実装方針を記載
+- `references/meta.md`: 技術に依存しない設計判断、承認、レビュー、可逆性のルール
+- `references/user-software.md`: frontend より上位の、ユーザーの目的・状態・フィードバック・復旧を扱うルール
+- `references/frontend.md` / `backend.md` / `infrastructure.md`: 責務領域ごとの共通ルール
+- `references/rails.md` / `golang.md` / `terraform.md` / `typescript.md` / `react.md`: 技術ごとの通常の実装ルール
 - `example/`: `references/` のルールを具体的な要件とコードで理解するための、人間向けの解説
 
 AI に実装を依頼するときは `SKILL.md` と該当する `references/` を使い、`example/` はルールの正本として扱いません。
@@ -105,7 +108,7 @@ AI の変更は、ファイル単位ではなく意味単位で分けるのが�
 ## メンテナンス
 
 - AI の判断基準を追加・変更するときは、まず該当する `references/` の箇条書きを更新する。
-- Rails、frontend、infrastructure などの通常の実装方針は、該当する reference に短く書く。`SKILL.md` に同じルールを重複して書かない。
+- meta、user-software、frontend、backend、infrastructure、Rails、Golang、Terraform、TypeScript、React などの方針は、該当する reference に短く書く。`SKILL.md` に同じルールを重複して書かない。
 - 人間が具体的なケースを理解できるようにする必要がある場合だけ、対応する `example/` を追加・更新する。
 - `example/` は reference の文章を箇条書きで再掲する場所ではなく、要件、やらないこと、decision diff、実装例、レビュー観点を説明する場所とする。
 - reference の追加・変更・削除時は、`example/README.md` と該当カテゴリの README、影響を受ける個別 example の対応表と内容を確認する。

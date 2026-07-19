@@ -33,10 +33,18 @@ reference を変更したときは、対応する example の説明、コード�
 
 対応する reference は次のとおりです。
 
-- Backend / Rails: [`../references/rails.md`](../references/rails.md)
-- Frontend: [`../references/frontend.md`](../references/frontend.md)
-- Infrastructure: [`../references/infrastructure.md`](../references/infrastructure.md)
-- Core / Architecture: [`../references/core.md`](../references/core.md)
+| Reference | 主な example |
+| --- | --- |
+| [`meta.md`](../references/meta.md) | [`architecture/`](./architecture/) |
+| [`user-software.md`](../references/user-software.md) | [`architecture/user-software-contract.md`](./architecture/user-software-contract.md) |
+| [`frontend.md`](../references/frontend.md) | [`frontend/`](./frontend/) |
+| [`backend.md`](../references/backend.md) | [`backend/`](./backend/) |
+| [`infrastructure.md`](../references/infrastructure.md) | [`infrastructure/`](./infrastructure/) |
+| [`rails.md`](../references/rails.md) | Rails を使った [`backend/`](./backend/) |
+| [`golang.md`](../references/golang.md) | 専用 example は、具体的なケースが必要になった時点で追加する |
+| [`terraform.md`](../references/terraform.md) | Terraform を使った [`infrastructure/`](./infrastructure/) |
+| [`typescript.md`](../references/typescript.md) | TypeScript を使った [`frontend/`](./frontend/) |
+| [`react.md`](../references/react.md) | React を使った [`frontend/`](./frontend/) |
 
 ### Backend / Rails
 
@@ -73,8 +81,9 @@ reference を変更したときは、対応する example の説明、コード�
 - [環境変数・設定追加の立証責任](./infrastructure/no-unapproved-config.md)
 - [CI/CD 変更の最小差分](./infrastructure/minimal-ci-change.md)
 
-### Core / Architecture
+### Meta / User-software / Architecture
 
+- [ユーザーとの境界を先に設計する](./architecture/user-software-contract.md)
 - [decision diff と実装の分離](./architecture/decision-diff-full-flow.md)
 - [local consistency 優先](./architecture/local-consistency.md)
 - [承認後に逸脱しない](./architecture/post-approval-stop.md)

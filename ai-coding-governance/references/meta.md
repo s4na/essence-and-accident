@@ -1,4 +1,4 @@
-# Core reference
+# Meta reference
 
 - 現在の要件を満たす最小の概念差分を選ぶ。
 - 実装前に、要件解釈、既存パターン、変更ファイル、新規概念、schema 変更、不変条件、棄却案、承認事項、検証方法を decision diff として示す。

@@ -9,7 +9,8 @@
 - 新しい判断基準や通常の実装方針は、最初に該当する `references/*.md` に追加すること
 - reference の本文は、AI が判断に使える短い箇条書きを基本とすること
 - 同じルールを `SKILL.md` に重複して書かず、必要なら reference へのリンクだけを追加すること
-- Rails、frontend、infrastructure のいずれにも属さない作業は `references/core.md` に置くこと
+- ユーザーとの境界に関する設計は `references/user-software.md`、技術や領域に依存しない進め方は `references/meta.md` に置くこと
+- frontend、backend、infrastructure の共通方針はそれぞれの reference に置き、Rails、Golang、Terraform、TypeScript、React 固有の方針は対応する reference に置くこと
 - reference 間で矛盾するルールを作らず、例外が必要なら decision diff で承認を求めること
 
 ## Examples の役割

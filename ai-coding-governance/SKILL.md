@@ -9,12 +9,13 @@ Use this skill to keep AI coding inside the project's allowed design space. Trea
 
 ## Reference lookup
 
-Before producing a decision diff, read the reference that matches the change:
+Before producing a decision diff, read the references that match the change:
 
-- Always read [`references/core.md`](./references/core.md).
-- For Rails, backend, model, controller, API, or server-side changes, read [`references/rails.md`](./references/rails.md).
-- For UI, component, client-side state, type, or frontend dependency changes, read [`references/frontend.md`](./references/frontend.md).
-- For Terraform, Kubernetes, CI/CD, environment, or cloud resource changes, read [`references/infrastructure.md`](./references/infrastructure.md).
+- Always read [`references/meta.md`](./references/meta.md).
+- For user-facing behavior, workflow, permissions, feedback, or recovery, read [`references/user-software.md`](./references/user-software.md).
+- For frontend work, read [`references/frontend.md`](./references/frontend.md). For backend work, read [`references/backend.md`](./references/backend.md). For infrastructure work, read [`references/infrastructure.md`](./references/infrastructure.md).
+- For Rails, read [`references/rails.md`](./references/rails.md). For Golang, read [`references/golang.md`](./references/golang.md). For Terraform, read [`references/terraform.md`](./references/terraform.md).
+- For TypeScript, read [`references/typescript.md`](./references/typescript.md). For React, read [`references/react.md`](./references/react.md).
 
 Use the references as concise operational rules. If a repository's established pattern conflicts with a reference, surface that conflict in the decision diff instead of silently choosing a new convention.
 
