@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Coding Governance"
+  short_description: "Constrain AI coding to decision diffs"
+  default_prompt: "Use $ai-coding-governance to plan a minimal, reviewable implementation before editing code."
