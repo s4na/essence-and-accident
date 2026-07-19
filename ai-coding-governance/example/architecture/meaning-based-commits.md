@@ -4,7 +4,20 @@
 
 ユーザー一覧に最終ログイン列を追加し、テストする。
 
-## 普通のコミット構成
+## やらないこと
+
+- ファイル単位で機械的にコミットを分けない
+- refactor、実装、修正で同じ行を何度も触らない
+- formatter だけの差分を振る舞い変更に混ぜない
+
+## decision diff
+
+- 新しい概念: なし
+- DB 変更: なし
+- 採用する単位: 表示変更とテストを、人間が判断しやすい意味単位で分ける
+- 棄却する単位: ファイル種別や AI の作業手順をそのままコミット単位にする
+
+## 普通の実装の全体像
 
 ```text
 commit 1: Add last sign-in column to admin users table
@@ -15,7 +28,7 @@ commit 2: Cover last sign-in display in system test
 - 表示確認だけを追加
 ```
 
-## 避けるコミット構成
+避ける構成:
 
 ```text
 commit 1: Refactor admin user table
@@ -29,3 +42,4 @@ commit 5: Fix formatting
 
 - 各コミットが人間の判断単位になっているか
 - 同じコードを複数回レビューさせる構成になっていないか
+- AI の作業履歴ではなく、レビューしやすい意味単位になっているか
