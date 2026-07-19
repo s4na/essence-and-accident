@@ -7,6 +7,18 @@ description: Governance workflow for AI-assisted coding that separates design de
 
 Use this skill to keep AI coding inside the project's allowed design space. Treat AI as a fast implementer under strong constraints, not as an unconstrained architect.
 
+
+## References
+
+After this skill is triggered, read only the relevant reference file for the code area being changed:
+
+- Backend changes: `references/backend.md`
+- Frontend changes: `references/frontend.md`
+- Infrastructure changes: `references/infrastructure.md`
+- Architecture/process decisions: `references/architecture.md`
+
+Do not read `references/examples/` during normal skill execution. Examples are human-facing companion material for understanding what the references produce as concrete code.
+
 ## Core rule
 
 Separate **decision diff** from **routine implementation** before editing code.
